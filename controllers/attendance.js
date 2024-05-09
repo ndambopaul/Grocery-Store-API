@@ -2,7 +2,7 @@ const attendance = require("../models/attendance");
 const Attendance = require("../models/attendance");
 
 const getAttendances = async(req, res) => {
-    const attendances = await Attendance.find({})
+    const attendances = await Attendance.find({}).populate("employee")
     res.send({"count": attendance.length, "attendances": attendances})
 };
 

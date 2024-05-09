@@ -26,8 +26,10 @@ const createSale = async(req, res) => {
     const { item_id, quantity } = req.body
 
     try {
-        const item = await Item.findById({ item_id });
+        const item = await Item.findById({ "_id": item_id });
         if(!item) return res.status(400).send({"message": `No item with id: ${item_id} found`});
+
+        if(quantity > item.quantity) return res.status(400).send({error: `You can only sell: ${item.quantity} ${item.name}s or less`})
 
         let sale = new Sale({
             item: item.name,
