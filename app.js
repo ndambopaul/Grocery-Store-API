@@ -18,6 +18,8 @@ connect_database();
 //
 const itemsRoutes = require("./routes/items");
 const salesRoutes = require("./routes/sales");
+const employeeRoutes = require("./routes/employees");
+const attendanceRoutes = require("./routes/attendances");
 
 // base route
 app.get("/", (req, res) => {
@@ -27,6 +29,8 @@ app.get("/", (req, res) => {
 
 app.use("/items", itemsRoutes);
 app.use("/sales", salesRoutes);
+app.use("/employees", employeeRoutes);
+app.use("/attendances", attendanceRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on: http://localhost:${PORT}`)
